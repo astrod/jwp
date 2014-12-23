@@ -52,7 +52,22 @@
 	    <h3>
 	        댓글 수 : ${question.countOfComment}
 	    </h3>
-	        <div class="comment">
+	    <c:forEach items="${answers}" var="each"> 
+	    
+	    <div class="comment">
+	            <div class="comment-metadata">
+	                <span class="comment-author">${each.writer}</span>
+	                <span class="comment-date">
+	                    ${each.createdDate}
+	                </span>
+	            </div>
+	            <div class="comment-content">
+	                <div class="about">내용 : </div>
+					${each.contents}
+	            </div>
+	        </div>
+	    
+	       <!--  <div class="comment">
 	            <div class="comment-metadata">
 	                <span class="comment-author">by Toby Lee,</span>
 	                <span class="comment-date">
@@ -81,7 +96,8 @@
 					저는 같은 맥락인거 같은데 ^^;;
 					아 그러고 보니 "안정"이라고 되어있네요. 저건 다른 의미인가.. ^^;;
 	            </div>
-	        </div>	    
+	        </div> -->	    
+	</c:forEach>
 	</div>
 	<!-- comments end -->
 	
