@@ -60,4 +60,10 @@ public class QuestionDao {
 		
 		return jdbcTemplate.executeQuery(sql, rm, questionId);
 	}
+	
+	public void changeCountOfComments(long questionId) {
+		JdbcTemplate jdbcTemplate = new JdbcTemplate();
+		String sql = "UPDATE QUESTIONS SET countOfComment = countOfComment+1 WHERE questionId = ?";
+		jdbcTemplate.executeUpdate(sql, questionId);
+	}
 }
