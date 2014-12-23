@@ -5,7 +5,7 @@
 
 * 
 
-1. 서버가 실행된 상태에서 localhost:8080으로 접근하면 서버는 web.xml로 접근합니다. web.xml로 접근하면 welcome-file-list에 있는 jsp파일을 참조하여 index.jsp를 로드한다. index.jsp는 내부에서 /list.next로 redirect를 시켜준다. 어노테이션으로 인해서, *.next로 접근하는 모든 주소는 FrontController로 들어가게 된다.
+1. 서버가 실행된 상태에서 localhost:8080으로 접근하면 서버는 web.xml로 접근한다. web.xml로 접근하면 welcome-file-list에 있는 jsp파일을 참조하여 index.jsp를 로드한다. index.jsp는 내부에서 /list.next로 redirect를 시켜준다. 어노테이션으로 인해서, *.next로 접근하는 모든 주소는 FrontController로 들어가게 된다.
 
 2. FrontController는 init()과 service()를 override했다. init()에서는 servletContext에서 RequestMapping 객체를 가져온다. 그 후에 *.next로 요청이 들어오면 service()메서드가 실행된다.
 
