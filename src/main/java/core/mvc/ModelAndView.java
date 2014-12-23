@@ -16,6 +16,7 @@ public class ModelAndView {
 		this.view = view;
 	}
 	
+	//hashmap에 값을 집어 넣고 그에 접근할 수 있는 객체를 리턴한다.
 	public ModelAndView addObject(String attributeName, Object attributeValue) {
 		model.put(attributeName, attributeValue);
 		return this;
@@ -24,6 +25,7 @@ public class ModelAndView {
 	public Map<String, Object> getModel() {
 		return Collections.unmodifiableMap(model);
 	}
+	
 	
 	public View getView() {
 		return view;

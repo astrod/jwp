@@ -30,9 +30,11 @@ public class FrontController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		//url을 요청에서 가져온다.
 		String requestUri = req.getRequestURI();
 		logger.debug("Method : {}, Request URI : {}", req.getMethod(), requestUri);
 		
+		//init에서 컨트롤러를 호출한다. 주소값에 따라 해당되는 컨트롤러(추상 클래스가 아닌 실 구현 객체)가 리턴된다.
 		Controller controller = rm.findController(urlExceptParameter(req.getRequestURI()));
 		ModelAndView mav;
 		try {
@@ -60,6 +62,7 @@ public class FrontController extends HttpServlet {
 		rd.forward(req, resp);
 	}
 	
+	//0부터 ?앞까지 잘라서 리턴하는 메서드.
 	String urlExceptParameter(String forwardUrl) {
 		int index = forwardUrl.indexOf("?");
 		if (index > 0) {
