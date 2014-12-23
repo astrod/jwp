@@ -1,16 +1,20 @@
 package next.controller;
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import next.dao.QuestionDao;
 import next.model.Question;
 import core.mvc.AbstractController;
+import core.mvc.Controller;
 import core.mvc.ModelAndView;
 
 public class SaveController extends AbstractController {
 	private QuestionDao questionDao = new QuestionDao();
+	private List<Question> questions;
 	
 	public ModelAndView execute(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
@@ -21,8 +25,9 @@ public class SaveController extends AbstractController {
 		questionDao.insert(q);
 		
 		ModelAndView mav = jstlView("list.jsp");
-		mav.addObject("question", q);
 		
+		questions = questionDao.findAll();
+		mav.addObject("questions", questions);
 		
 		return mav;
 	}
